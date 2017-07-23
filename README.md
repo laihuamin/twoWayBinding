@@ -26,7 +26,9 @@
 4、当订阅者接收到相应变化时，就会更新视图。
 
 ## 源码分析
+<br>
 ![ViewModel实例](http://upload-images.jianshu.io/upload_images/6018041-29ab13665e9081f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+</br>
 图中是一个最基本的vue实例，但是光有这些东西根本不能产生双向绑定，那Vue是怎么实现双向绑定的，我们一步一步来解析
 ```
 <body>
@@ -312,5 +314,3 @@ node.addEventListener('input', function (e) {
 });
 ```
 这个就是对node起到监听的作用，监听的是input标签，在真实的vueJs中会复杂很多，vm[name]是什么，vm是data对象，name是v-model的值，简而言之，就是当input发生变化的时候，把值赋值给data，就讲到这儿吧，基本都看懂了。
-
-接下来就是Vue源码（待续）！！

@@ -1,17 +1,20 @@
----
-title: vue双向绑定原理
----
 学了vue已经有2个月了，项目做了不少，但是还停留在操作层面，最近开始对原理层面的东西做一些深入性的挖掘，写下来和大家共享，也让自己整理一遍之后，能有所收获。
 
 <!--more-->
 ## 思路分析
 先从MVVM框架说起，MVVM框架都是data和view通过一个viewModel进行双向绑定，data驱动视图更新，视图改变驱动data变化。
+<br>
 ![MVVM框架view与data](http://upload-images.jianshu.io/upload_images/6018041-7f180404b25ea616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+</br>
 那接下来我们在来说说data是怎么更新视图的，讲源码的时候会详细讲。这里就粗略一点，其实主要起作用的一个函数是Object.defineProperty()函数用的set函数，来知道data变化了，需要更新视图。
+<br>
 ![data更新view](http://upload-images.jianshu.io/upload_images/6018041-bc0536105b2760f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+</br>
 ## 实现过程
 先看流程图：
+<br>
 ![流程图](http://upload-images.jianshu.io/upload_images/6018041-0cc9d94a3f3c9af7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+</br>
 首先，我们需要有：
 一个观察者observer，用来劫持和监听所有属性，要是发生变化通知订阅者
 一个订阅者watcher，可以收到属性变化并通知相应的执行函数，来更新视图
